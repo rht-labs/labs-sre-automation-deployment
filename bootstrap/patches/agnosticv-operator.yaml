@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: agnosticv-operator
-  namespace: lodestar-argo-cd
+  namespace: openshift-gitops
 spec:
   source:
     helm:
@@ -14,4 +14,6 @@ spec:
         namespace:
           create: false
           name: lodestar-babylon-operators
-    targetRevision: v0.14.4
+        poolboy:
+          namespace: lodestar-babylon-operators
+    targetRevision: v0.22.2

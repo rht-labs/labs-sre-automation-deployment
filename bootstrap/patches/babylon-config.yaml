@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: poolboy
+  name: babylon-config
   namespace: openshift-gitops
 spec:
   ignoreDifferences:
@@ -9,19 +9,20 @@ spec:
     kind: CustomResourceDefinition
     jsonPointers:
       - /spec/names/shortNames
-  - group: poolboy.gpte.redhat.com
-    kind: ResourceClaim
+  - kind: Namespace
     jsonPointers:
-      - /spec/vars/current_state
-      - /spec/vars/desired_state
+      - /metadata/labels
   source:
     helm:
       values: |-
+            admin:
+              deploy: false
             anarchy:
-              create: false
+              namespaces:
+                - name: lodestar-babylon-operators
+            poolboy:
               namespace: lodestar-babylon-operators
-              service: anarchy
-            namespace:
-              create: false
-              name: lodestar-babylon-operators
-    targetRevision: v0.12.0
+            operatorNamespace: openshift-operators
+            crossClusterBackup:
+              enable: false
+    targetRevision: v0.13.5

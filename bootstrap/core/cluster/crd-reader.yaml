@@ -1,0 +1,30 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: crd-reader-automation
+rules:
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - 'customresourcedefinitions'
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: crd-reader-automation-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: crd-reader-automation
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: openshift-gitops
+- kind: ServiceAccount
+  name: default
+  namespace: lodestar-babylon-operators
+

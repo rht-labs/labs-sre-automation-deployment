@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: lodestar-tools
+  name: labs-sre-automation-tools
 spec:
   clusterResourceWhitelist:
   - group: '*'
