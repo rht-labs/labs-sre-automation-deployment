@@ -26,5 +26,5 @@ subjects:
   namespace: openshift-gitops
 - kind: ServiceAccount
   name: default
-  namespace: lodestar-babylon-operators
+  namespace: babylon-operators
 

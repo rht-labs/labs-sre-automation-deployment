@@ -19,9 +19,9 @@ spec:
               deploy: false
             anarchy:
               namespaces:
-                - name: lodestar-babylon-operators
+                - name: babylon-operators
             poolboy:
-              namespace: lodestar-babylon-operators
+              namespace: babylon-operators
             operatorNamespace: openshift-operators
             crossClusterBackup:
               enable: false

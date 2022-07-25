@@ -9,4 +9,4 @@ spec:
     name: letsencrypt-production
     kind: ClusterIssuer
   dnsNames:
-    - resource-dispatcher.lodestar.example.com
+    - resource-dispatcher.example.com

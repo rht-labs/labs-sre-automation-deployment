@@ -19,9 +19,9 @@ spec:
       values: |-
             anarchy:
               create: false
-              namespace: lodestar-babylon-operators
+              namespace: babylon-operators
               service: anarchy
             namespace:
               create: false
-              name: lodestar-babylon-operators
+              name: babylon-operators
     targetRevision: v0.12.0

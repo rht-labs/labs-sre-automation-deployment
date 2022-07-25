@@ -8,12 +8,12 @@ spec:
     helm:
       values: |-
         anarchy:
-          namespace: lodestar-babylon-operators
+          namespace: babylon-operators
         image:
           repository: quay.io/redhat-gpte/agnosticv-operator
         namespace:
           create: false
-          name: lodestar-babylon-operators
+          name: babylon-operators
         poolboy:
-          namespace: lodestar-babylon-operators
+          namespace: babylon-operators
     targetRevision: v0.22.2

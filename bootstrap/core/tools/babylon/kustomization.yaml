@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - lodestar-agnosticvrepos.yaml
+  - automation-agnosticvrepos.yaml
   - agnosticv-operator.yaml
   - anarchy-operator.yaml
   - kopfpeering-crd.yaml
@@ -17,7 +17,7 @@ patches:
         value: openshift-gitops
       - op: add
         path: /spec/destination/namespace
-        value: lodestar-babylon-operators
+        value: babylon-operators
     target:
       group: argoproj.io
       kind: Application
