@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: agnosticv-operator
+  namespace: openshift-gitops
+spec:
+  source:
+    helm:
+      values: |-
+        anarchy:
+          namespace: babylon-operators
+        image:
+          repository: quay.io/redhat-gpte/agnosticv-operator
+        namespace:
+          create: false
+          name: babylon-operators
+        poolboy:
+          namespace: babylon-operators
+    targetRevision: v0.22.2

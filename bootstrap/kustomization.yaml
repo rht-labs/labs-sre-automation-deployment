@@ -1,0 +1,16 @@
+## Main Kustomize base for Labs SRE Automation deployment
+## Assumption is there's an ArgoCD Operator running in the target namespace
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+- core
+
+## Set of patches for Labs SRE Automation - version and imageTags
+## left on purpose, current versions are valid for Test type of environment
+## they will be patched to target versions on Release&Promotion
+patchesStrategicMerge:
+- patches/resource-dispatcher.yaml
+- patches/agnosticv-operator.yaml
+- patches/anarchy-operator.yaml
+- patches/poolboy.yaml
+- patches/babylon-config.yaml

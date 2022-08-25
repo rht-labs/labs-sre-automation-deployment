@@ -1,0 +1,26 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: reload-configurable-resources-automation
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  template:
+    spec:
+      containers:
+      - name: reload-configurable-resources
+        image: "quay.io/openshift/origin-cli"
+        command:
+        - "/bin/bash"
+        - "-c"
+        - |
+          oc rollout latest dc/resource-dispatcher -n openshift-gitops || echo "deployment config resource-dispatcher does not exist"
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 30
+      activeDeadlineSeconds: 500
+      dnsPolicy: ClusterFirst
+      serviceAccountName: openshift-gitops-argocd-application-controller
+      serviceAccount: openshift-gitops-argocd-application-controller
